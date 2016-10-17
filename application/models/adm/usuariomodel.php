@@ -35,8 +35,8 @@ class UsuarioModel extends CI_Model{
         
         $this->db->from($this->tabela);
         
-        $this->db->where('usuLogin', $login);
-        $this->db->where('usuSenha', md5($senha));
+        $this->db->where('usu_email', $login);
+        $this->db->where('usu_senha', md5($senha));
         
         $resultado = $this->db->get();
         
