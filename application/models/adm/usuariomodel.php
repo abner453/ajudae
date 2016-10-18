@@ -1,16 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of usuariomodel
- *
- * @author 12141001070
- */
 class UsuarioModel extends CI_Model{
     
     var $tabela = 'usuario';
@@ -37,6 +26,8 @@ class UsuarioModel extends CI_Model{
         
         $this->db->where('usu_email', $login);
         $this->db->where('usu_senha', md5($senha));
+        $this->db->where('usu_ativo', true);
+        $this->db->where('usu_gru_id', 1);
         
         $resultado = $this->db->get();
         

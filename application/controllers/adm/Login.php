@@ -1,16 +1,5 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- * Description of Login
- *
- * @author 12141001070
- */
 class Login extends CI_Controller {
     
     public function __construct() {
@@ -19,24 +8,51 @@ class Login extends CI_Controller {
         $this->load->model($this->config->item('adm') . 'usuariomodel');
     }
     //put your code here
-    public function index()
+    public function Index()
     {
-        $autenticou = $this->usuariomodel->Autenticar('adm', '123');
+        
+        if(_loginAdm(false)) {
+            
+            redirect(base_url($this->config->item('adm') . 'dashboard'));
+        }
+        else {
+            
+            $this->load->view($this->config->item('adm') . 'login');
+        }
+    }
+    
+    public function Autenticar() {
+        
+        $email = $this->input->post('email');
+        $senha = $this->input->post('senha');
+        
+        $autenticou = $this->usuariomodel->Autenticar($email, $senha);
         
         if($autenticou) {
             
             $dadosUsuario = array(
-                'nomeUsuario' => $autenticou->usuLogin,
-                'loginAdm'    => true
+                'dadosUsuario' => array(
+                    'id'           => $autenticou->USU_ID,
+                    'nomeCompleto' => $autenticou->USU_NOME_COMPLETO,
+                    'email'        => $autenticou->USU_EMAIL
+                ),
+                'loginAdm' => true
             );
             
-            $this->session->set_userdata($dadosUsuario);
+            $this->session->set_userdata('dadosUsuario', $dadosUsuario);
             
-            redirect($this->config->item('adm') . 'dashboard');
+            redirect(base_url($this->config->item('adm') . 'dashboard'));
         }
         else {
             
-            echo 'You lose!';
+            $this->session->set_flashdata(
+                array(
+                    'msgDadosInvalidosLogin' => true,
+                    'email' => $email
+                )
+            );
+            
+            redirect(base_url($this->config->item('adm') . 'login'));
         }
     }
 }

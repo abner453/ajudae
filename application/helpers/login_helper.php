@@ -2,7 +2,7 @@
 
 if ( ! function_exists('_loginAdm'))
 {
-    function _loginAdm()
+    function _loginAdm($redirecionar = true)
     {
         
         $CI = &get_instance();
@@ -12,7 +12,14 @@ if ( ! function_exists('_loginAdm'))
         }
         else {
             
-            redirect(base_url($CI->config->item('adm') . 'Login'));
+            if($redirecionar) {
+                
+                redirect(base_url($CI->config->item('adm') . 'Login'));
+            }
+            else {
+                
+                return false;
+            }
         }
     }
 }
