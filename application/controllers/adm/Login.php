@@ -39,7 +39,7 @@ class Login extends CI_Controller {
                 'loginAdm' => true
             );
             
-            $this->session->set_userdata('dadosUsuario', $dadosUsuario);
+            $this->session->set_userdata($dadosUsuario);
             
             redirect(base_url($this->config->item('adm') . 'dashboard'));
         }
