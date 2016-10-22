@@ -6,10 +6,12 @@ class Dashboard extends CI_Controller{
         parent::__construct();
         
         _loginAdm();
+        
+        _montaMenuAdm();
     }
     //put your code here
     public function index()
     {
-        echo '<pre>';print_r($this->session->userdata('nomeUsuario'));
+        $this->load->view($this->config->item('urlLayoutAdm'));
     }
 }

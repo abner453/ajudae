@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('html', 'url', 'login');
+$autoload['helper'] = array('html', 'url', 'login', 'menu');
 
 /*
 | -------------------------------------------------------------------
@@ -103,7 +103,7 @@ $autoload['helper'] = array('html', 'url', 'login');
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array('url');
+$autoload['config'] = array('url', 'template');
 
 /*
 | -------------------------------------------------------------------

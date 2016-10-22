@@ -20,14 +20,18 @@ class UsuarioModel extends CI_Model{
         }
     }
     
-    public function Autenticar($login, $senha) {
+    public function Autenticar($email, $senha) {
+        
+        $this->load->config('grupos');
+        
+        $gruposId = $this->config->item('gruposId');
         
         $this->db->from($this->tabela);
         
-        $this->db->where('usu_email', $login);
+        $this->db->where('usu_email', $email);
         $this->db->where('usu_senha', md5($senha));
         $this->db->where('usu_ativo', true);
-        $this->db->where('usu_gru_id', 1);
+        $this->db->where('usu_gru_id', $gruposId['adm']);
         
         $resultado = $this->db->get();
         
