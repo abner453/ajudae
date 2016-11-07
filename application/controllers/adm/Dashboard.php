@@ -12,6 +12,10 @@ class Dashboard extends CI_Controller{
     //put your code here
     public function index()
     {
-        $this->load->view($this->config->item('urlLayoutAdm'));
+        
+        $dados           = array();
+        $dados['titulo'] = 'Dashboard';
+        
+        $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }
 }

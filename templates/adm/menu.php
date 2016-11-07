@@ -23,7 +23,7 @@
                     <ul class="sub">
                         <?php foreach ($menu['funcionalidades'] as $funcionalidade) { ?>
                         
-                            <li><a class="" href="<?php echo base_url($funcionalidade['url'])?>"><?php echo $funcionalidade['nome']?></a></li>                          
+                            <li><a class="" href="<?php echo base_url($this->config->item('adm') . $funcionalidade['url'])?>"><?php echo $funcionalidade['nome']?></a></li>                          
                         <?php }?>
                     </ul>
                 </li>
