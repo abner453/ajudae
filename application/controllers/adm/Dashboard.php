@@ -5,9 +5,9 @@ class Dashboard extends CI_Controller{
     public function __construct() {
         parent::__construct();
         
-        _loginAdm();
+        _LoginAdm();
         
-        _montaMenuAdm();
+        _MontaMenuAdm();
     }
     //put your code here
     public function index()

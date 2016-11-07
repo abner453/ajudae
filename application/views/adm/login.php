@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-    <meta name="author" content="GeeksLabs">
-    <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+    <meta name="description" content="Ajudaê">
+    <meta name="author" content="Abner, Aline, Josias, Matheus, Maykon">
+    <meta name="keyword" content="Ajudae">
     <link rel="shortcut icon" href="<?php echo base_url($this->config->item('templateAdm') . 'img/favicon.png');?>">
 
-    <title>Login Page 2 | Creative - Bootstrap 3 Responsive Admin Template</title>
+    <title>Ajudaê | Login</title>
 
     <!-- Bootstrap CSS -->    
     <link href="<?php echo base_url($this->config->item('templateAdm') . 'css/bootstrap.min.css');?>" rel="stylesheet">
