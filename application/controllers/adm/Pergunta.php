@@ -14,6 +14,7 @@ class Pergunta extends CI_Controller{
     {
         $dados           = array();
         $dados['titulo'] = 'Perguntas';
+        $dados['view']   = $this->config->item('adm') . 'pergunta/index';
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

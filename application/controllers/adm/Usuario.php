@@ -14,6 +14,7 @@ class Usuario extends CI_Controller{
     {
         $dados           = array();
         $dados['titulo'] = 'Usuários';
+        $dados['view']   = $this->config->item('adm') . 'usuario/index';
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

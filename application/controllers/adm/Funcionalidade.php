@@ -14,6 +14,7 @@ class Funcionalidade extends CI_Controller{
     {
         $dados           = array();
         $dados['titulo'] = 'Funcionalides';
+        $dados['view']   = $this->config->item('adm') . 'funcionalidade/index';
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

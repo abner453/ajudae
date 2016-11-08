@@ -14,6 +14,7 @@ class ModerarTags extends CI_Controller{
     {
         $dados           = array();
         $dados['titulo'] = 'Moderar tags';
+        $dados['view']   = $this->config->item('adm') . 'moderarTags/index';
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

@@ -91,6 +91,8 @@
                             </ol>
                         </div>
                     </div>
+                    
+                    <?php $this->load->view($view);?>
 
                 </section>
             </section>

@@ -14,6 +14,7 @@ class GrupoUsuario extends CI_Controller{
     {
         $dados           = array();
         $dados['titulo'] = 'Grupos de usuário';
+        $dados['view']   = $this->config->item('adm') . 'grupoUsuario/index';
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

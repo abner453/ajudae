@@ -14,6 +14,7 @@ class Modulo extends CI_Controller{
     {
         $dados           = array();
         $dados['titulo'] = 'Módulos';
+        $dados['view']   = $this->config->item('adm') . 'modulo/index';
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }
