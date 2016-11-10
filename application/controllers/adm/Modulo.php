@@ -12,9 +12,10 @@ class Modulo extends CI_Controller{
     //put your code here
     public function index()
     {
-        $dados           = array();
-        $dados['titulo'] = 'Módulos';
-        $dados['view']   = $this->config->item('adm') . 'modulo/index';
+        $dados                        = array();
+        $dados['titulo']              = 'Módulos';
+        $dados['view']                = 'modulo/index';
+        $dados['funcionalidadeAtiva'] = 3;
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

@@ -12,9 +12,10 @@ class ModerarTags extends CI_Controller{
     //put your code here
     public function index()
     {
-        $dados           = array();
-        $dados['titulo'] = 'Moderar tags';
-        $dados['view']   = $this->config->item('adm') . 'moderarTags/index';
+        $dados                        = array();
+        $dados['titulo']              = 'Moderar tags';
+        $dados['view']                = 'moderarTags/index';
+        $dados['funcionalidadeAtiva'] = 2;
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

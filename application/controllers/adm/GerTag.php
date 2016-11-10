@@ -12,9 +12,10 @@ class GerTag extends CI_Controller{
     //put your code here
     public function index()
     {
-        $dados           = array();
-        $dados['titulo'] = 'Gerenciar TAGs';
-        $dados['view']   = $this->config->item('adm') . 'gerTag/index';
+        $dados                        = array();
+        $dados['titulo']              = 'Gerenciar TAGs';
+        $dados['view']                = 'gerTag/index';
+        $dados['funcionalidadeAtiva'] = 1;
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

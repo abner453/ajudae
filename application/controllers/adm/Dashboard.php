@@ -13,8 +13,10 @@ class Dashboard extends CI_Controller{
     public function index()
     {
         
-        $dados           = array();
-        $dados['titulo'] = 'Dashboard';
+        $dados                        = array();
+        $dados['titulo']              = 'Dashboard';
+        $dados['view']                = 'dashboard';
+        $dados['funcionalidadeAtiva'] = 0;
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

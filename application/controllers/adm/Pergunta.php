@@ -12,9 +12,10 @@ class Pergunta extends CI_Controller{
     //put your code here
     public function index()
     {
-        $dados           = array();
-        $dados['titulo'] = 'Perguntas';
-        $dados['view']   = $this->config->item('adm') . 'pergunta/index';
+        $dados                        = array();
+        $dados['titulo']              = 'Perguntas';
+        $dados['view']                = 'pergunta/index';
+        $dados['funcionalidadeAtiva'] = 7;
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

@@ -92,7 +92,7 @@
                         </div>
                     </div>
                     
-                    <?php $this->load->view($view);?>
+                    <?php $this->load->view($this->config->item('adm') . $view);?>
 
                 </section>
             </section>

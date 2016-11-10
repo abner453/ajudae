@@ -9,7 +9,7 @@ class ModuloModel extends CI_Model{
         $select = 'm.MOD_ID as idModulo, m.MOD_NOME as nomeModulo, m.MOD_ICONE as iconeModulo,';
         $select .= 'GROUP_CONCAT(f.FUN_NOME) as nomesFuncionalidades,';
         $select .= 'GROUP_CONCAT(f.FUN_URL) as urlsFuncionalidades,';
-        $select .= 'GROUP_CONCAT(f.FUN_ICONE) as iconesFuncionalidades';
+        $select .= 'GROUP_CONCAT(f.FUN_ID) as idsFuncionalidades';
         
         $this->db->select($select);
         
@@ -45,12 +45,14 @@ class ModuloModel extends CI_Model{
                 $dadosFuncionalidades  = array();
                 $nomesFuncionalidades  = explode(',', $modulo->nomesFuncionalidades);
                 $urlsFuncionalidades   = explode(',', $modulo->urlsFuncionalidades);
+                $idsFuncionalidades    = explode(',', $modulo->idsFuncionalidades);
                 
                 foreach ($nomesFuncionalidades as $key => $value) {
                     
                     $dadosFuncionalidade = array();
                     $dadosFuncionalidade['nome']  = $value;
                     $dadosFuncionalidade['url']   = (isset($urlsFuncionalidades[$key])) ? $urlsFuncionalidades[$key] : '';
+                    $dadosFuncionalidade['id']    = (isset($idsFuncionalidades[$key])) ? $idsFuncionalidades[$key] : '';
                     
                     $dadosModulo['funcionalidades'][] = $dadosFuncionalidade;
                 }
