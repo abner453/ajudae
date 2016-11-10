@@ -11,6 +11,8 @@ class GerTag extends CI_Controller{
         _PermissaoAdmFuncionalidade($this->funcionalidadeId);
         
         _MontaMenuAdm();
+        
+        $this->load->model($this->config->item('adm') . 'tagmodel');
     }
     //put your code here
     public function index()
@@ -20,6 +22,7 @@ class GerTag extends CI_Controller{
         $dados['titulo']              = 'Gerenciar TAGs';
         $dados['view']                = 'gerTag/index';
         $dados['funcionalidadeAtiva'] = $this->funcionalidadeId;
+        $dados['tags']                = $this->tagmodel->BuscarTodos();
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }
