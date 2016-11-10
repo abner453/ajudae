@@ -2,10 +2,13 @@
 
 class ModerarTags extends CI_Controller{
     
+    var $funcionalidadeId = 2;
+    
     public function __construct() {
         parent::__construct();
         
         _LoginAdm();
+        _PermissaoAdmFuncionalidade($this->funcionalidadeId);
         
         _MontaMenuAdm();
     }
@@ -15,7 +18,7 @@ class ModerarTags extends CI_Controller{
         $dados                        = array();
         $dados['titulo']              = 'Moderar tags';
         $dados['view']                = 'moderarTags/index';
-        $dados['funcionalidadeAtiva'] = 2;
+        $dados['funcionalidadeAtiva'] = $this->funcionalidadeId;
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

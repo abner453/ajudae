@@ -34,7 +34,8 @@ class Login extends CI_Controller {
                 'dadosUsuario' => array(
                     'id'           => $autenticou->USU_ID,
                     'nomeCompleto' => $autenticou->USU_NOME_COMPLETO,
-                    'email'        => $autenticou->USU_EMAIL
+                    'email'        => $autenticou->USU_EMAIL,
+                    'grupo'        => $autenticou->USU_GRU_ID
                 ),
                 'loginAdm' => true
             );

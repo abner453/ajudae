@@ -2,10 +2,13 @@
 
 class Usuario extends CI_Controller{
     
+    var $funcionalidadeId = 5;
+    
     public function __construct() {
         parent::__construct();
         
         _LoginAdm();
+        _PermissaoAdmFuncionalidade($this->funcionalidadeId);
         
         _MontaMenuAdm();
     }
@@ -15,7 +18,7 @@ class Usuario extends CI_Controller{
         $dados                        = array();
         $dados['titulo']              = 'Usuários';
         $dados['view']                = 'usuario/index';
-        $dados['funcionalidadeAtiva'] = 5;
+        $dados['funcionalidadeAtiva'] = $this->funcionalidadeId;
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }

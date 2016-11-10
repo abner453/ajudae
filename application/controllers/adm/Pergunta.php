@@ -2,10 +2,13 @@
 
 class Pergunta extends CI_Controller{
     
+    var $funcionalidadeId = 7;
+    
     public function __construct() {
         parent::__construct();
         
         _LoginAdm();
+        _PermissaoAdmFuncionalidade($this->funcionalidadeId);
         
         _MontaMenuAdm();
     }
@@ -15,7 +18,7 @@ class Pergunta extends CI_Controller{
         $dados                        = array();
         $dados['titulo']              = 'Perguntas';
         $dados['view']                = 'pergunta/index';
-        $dados['funcionalidadeAtiva'] = 7;
+        $dados['funcionalidadeAtiva'] = $this->funcionalidadeId;
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }
