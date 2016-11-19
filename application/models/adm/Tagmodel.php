@@ -22,9 +22,11 @@ class TagModel extends CI_Model{
         }
     }
     
-    public function BuscarTodos() {
+    public function BuscarTodos($de = 0, $limite = 10) {
         
         $this->db->from($this->tabela);
+        
+        $this->db->limit($limite, $de);
         
         $resultado = $this->db->get();
         
@@ -35,6 +37,62 @@ class TagModel extends CI_Model{
         else {
             
             return array();
+        }
+    }
+    
+    public function QuantidadeTodos() {
+        
+        $this->db->from($this->tabela);
+        
+        $resultado = $this->db->get();
+        
+        if($resultado->num_rows()){
+            
+            return $resultado->num_rows();
+        }
+        else {
+            
+            return 0;
+        }
+    }
+    
+    public function BuscarTodosComClausulas($clausulas, $de, $limite) {
+        
+        $this->db->from($this->tabela);
+        
+        $this->db->where($clausulas);
+        
+        $this->db->limit($limite, $de);
+        
+        $resultado = $this->db->get();
+        
+        if($resultado->num_rows()){
+            
+            return $resultado->result();
+        }
+        else {
+            
+            return array();
+        }
+    }
+    
+     public function QuantidadeTodosComClausulas($clausulas, $de, $limite) {
+        
+        $this->db->from($this->tabela);
+        
+        $this->db->where($clausulas);
+        
+        $this->db->limit($de, $limite);
+        
+        $resultado = $this->db->get();
+        
+        if($resultado->num_rows()){
+            
+            return $resultado->num_rows();
+        }
+        else {
+            
+            return 0;
         }
     }
 }

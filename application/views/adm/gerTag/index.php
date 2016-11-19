@@ -37,7 +37,7 @@
                                 <td><?php echo $tag->TAG_ID;?></td>
                                 <td><?php echo $tag->TAG_NOME;?></td>
                                 <td><span class="label label-<?php echo $classeLabel;?>"><?php echo $textoLabel;?></span></td>
-                                <td><?php echo $tag->TAG_DATA_REGISTRO;?></td>
+                                <td><?php echo date('d/m/Y H:i:s', strtotime($tag->TAG_DATA_REGISTRO));?></td>
                             </tr>
                         <?php }?>
                     </tbody>
