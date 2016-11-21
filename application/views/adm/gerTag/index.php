@@ -4,7 +4,29 @@
             <header class="panel-heading" style="padding: 5px;">
                 <div class="row">
                     <div class="col-xs-12">
-                        <button type="submit" class="btn btn-default">Filtrar</button>
+                        <?php echo form_open($this->config->item('adm') . 'gerTag/filtrar', array('class' => 'form-inline'));?>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="idGerTag" placeholder="Id" name="idGerTag" value="<?php echo $this->session->userdata('idGerTag');?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="nomeGerTag" placeholder="Nome" name="nomeGerTag" value="<?php echo $this->session->userdata('nomeGerTag');?>">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="radio" id="cadastroGerTag" name="cadastroGerTag" value="adm" <?php echo ($this->session->userdata('cadastroGerTag') == 'adm') ?  'checked' : '';?>> Cadastro no site
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="radio"  id="cadastroGerTag" name="cadastroGerTag" value="app" <?php echo ($this->session->userdata('cadastroGerTag') == 'app') ?  'checked' : '';?>> Cadastro na administração
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="dataGerTag" placeholder="Data Cadastro" name="dataGerTag" value="<?php echo $this->session->userdata('dataGerTag');?>">
+                        </div>
+                        <button type="submit" class="btn btn-default" value="filtrar">Filtrar</button>
+                        <button type="submit" class="btn btn-warning" value="limpar" name="botaoLimpar">Limpar</button>
+                        <?php echo form_close();?>
                     </div>
                 </div>
             </header>
@@ -12,7 +34,6 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>#</th>
                             <th>Id</th>
                             <th>Nome</th>
                             <th>Cadastro</th>
@@ -33,7 +54,6 @@
                             ?>
                         
                             <tr>
-                                <td>1</td>
                                 <td><?php echo $tag->TAG_ID;?></td>
                                 <td><?php echo $tag->TAG_NOME;?></td>
                                 <td><span class="label label-<?php echo $classeLabel;?>"><?php echo $textoLabel;?></span></td>

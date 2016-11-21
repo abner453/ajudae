@@ -124,5 +124,22 @@
         <script src="<?php echo base_url($this->config->item('templateAdm') . 'js/sparklines.js');?>"></script>
         <script src="<?php echo base_url($this->config->item('templateAdm') . 'js/jquery.slimscroll.min.js');?>"></script>
 
+        <?php
+        if(!empty($assetsPlugin)) {
+            
+            foreach ($assetsPlugin as $plugin) {
+
+                echo '<script src="'. base_url($this->config->item('assetsPlugins') . $plugin) . '"></script>';
+            }
+        }
+        
+        if(!empty($assetsAjax)) {
+            
+            foreach ($assetsAjax as $ajax) {
+
+                echo '<script src="'. base_url($this->config->item('assetsAjaxAdm') . $ajax) . '"></script>';
+            }
+        }
+        ?>
     </body>
 </html>

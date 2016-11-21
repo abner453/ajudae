@@ -23,10 +23,15 @@ class GerTag extends CI_Controller{
         $dados['titulo']              = 'Gerenciar TAGs';
         $dados['view']                = 'gerTag/index';
         $dados['funcionalidadeAtiva'] = $this->funcionalidadeId;
+            
+        $clausulas = $this->MontaClausulas();
+        $dados['tags'] = $this->tagmodel->BuscarComClausulas($clausulas, $de, $this->limitePaginacao);
         
-        //$clausulas = $this->MontaClausulas();
+        $dados['assetsPlugin'][] = 'inputMask/inputmask.js';
+        $dados['assetsPlugin'][] = 'inputMask/inputmask.date.extensions.js';
+        $dados['assetsPlugin'][] = 'inputMask/jquery.inputmask.js';
         
-        $dados['tags'] = $this->tagmodel->BuscarTodos();
+        $dados['assetsAjax'][] = 'GerTag.js';
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }
@@ -35,33 +40,57 @@ class GerTag extends CI_Controller{
         
         $retorno = array();
         
-//        if(!empty($this->session->userdata('idGerTag'))) {
-//            
-//            $retorno['TAG_ID'] = $this->session->userdata('idGerTag');
-//        }
-//        
-//        if(!empty($this->session->userdata('nomeGerTag'))) {
-//            
-//            $retorno['TAG_NOME'] = 'like %' . $this->session->userdata('nomeGerTag') . '%';
-//        }
-//        
-//        if(!empty($this->session->userdata('cadastroGerTag'))) {
-//            
-//            if($this->session->userdata('cadastroGerTag') == 'adm') {
-//                
-//                $retorno['TAG_CADASTRO_SITE'] = 0;
-//            }
-//            else {
-//                
-//                $retorno['TAG_CADASTRO_SITE'] = 1;
-//            }
-//        }
-//        
-//        if(!empty($this->session->userdata('dataGerTag'))) {
-//            
-//            $retorno['TAG_DATA_REGISTRO'] = $this->session->userdata('dataGerTag');
-//        }
+        if(!empty($this->session->userdata('idGerTag'))) {
+            
+            $retorno['TAG_ID'] = $this->session->userdata('idGerTag');
+        }
+        
+        if(!empty($this->session->userdata('nomeGerTag'))) {
+            
+            $retorno['TAG_NOME like '] = '%' . $this->session->userdata('nomeGerTag') . '%';
+        }
+        
+        if(!empty($this->session->userdata('cadastroGerTag'))) {
+            
+            if($this->session->userdata('cadastroGerTag') == 'app') {
+                
+                $retorno['TAG_CADASTRO_SITE'] = 0;
+            }
+            else {
+                
+                $retorno['TAG_CADASTRO_SITE'] = 1;
+            }
+        }
+        
+        if(!empty($this->session->userdata('dataGerTag'))) {
+            
+            $retorno['TAG_DATA_REGISTRO >= '] = _ConverteDataPorEng($this->session->userdata('dataGerTag')) . ' 00:00:00';
+            $retorno['TAG_DATA_REGISTRO <= '] = _ConverteDataPorEng($this->session->userdata('dataGerTag')) . ' 23:59:59';
+        }
         
         return $retorno;
+    }
+    
+    public function Filtrar() {
+        
+        if(!empty($this->input->post(botaoLimpar))) {
+            
+            $dadosSessao = array('idGerTag', 'nomeGerTag', 'cadastroGerTag', 'dataGerTag');
+
+            $this->session->unset_userdata($dadosSessao);
+        }
+        else {
+           
+            $dadosSessao = array();
+
+            $dadosSessao['idGerTag'] = $this->input->post('idGerTag');
+            $dadosSessao['nomeGerTag'] = $this->input->post('nomeGerTag');
+            $dadosSessao['cadastroGerTag'] = $this->input->post('cadastroGerTag');
+            $dadosSessao['dataGerTag'] = $this->input->post('dataGerTag');
+
+            $this->session->set_userdata($dadosSessao);
+        }
+        
+        redirect($this->config->item('adm') . 'gerTag/index');
     }
 }

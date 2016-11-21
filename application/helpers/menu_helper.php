@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-if ( ! function_exists('_montaMenuAdm'))
+if ( ! function_exists('_MontaMenuAdm'))
 {
     function _MontaMenuAdm() {
         

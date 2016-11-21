@@ -56,7 +56,7 @@ class TagModel extends CI_Model{
         }
     }
     
-    public function BuscarTodosComClausulas($clausulas, $de, $limite) {
+    public function BuscarComClausulas($clausulas, $de, $limite) {
         
         $this->db->from($this->tabela);
         
