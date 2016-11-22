@@ -76,13 +76,11 @@ class TagModel extends CI_Model{
         }
     }
     
-     public function QuantidadeTodosComClausulas($clausulas, $de, $limite) {
+     public function QuantidadeComClausulas($clausulas) {
         
         $this->db->from($this->tabela);
         
         $this->db->where($clausulas);
-        
-        $this->db->limit($de, $limite);
         
         $resultado = $this->db->get();
         

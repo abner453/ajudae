@@ -5,7 +5,6 @@ if ( ! function_exists('_montaPaginacao'))
     function _montaPaginacao($url, $uriSegment, $totalProdutos, $porPagina) {
         
         $CI = &get_instance();
-        $CI->load->model($CI->config->item('adm') . $model);
         
         $config_paginacao                     = $CI->config->item('paginacao');
         $config_paginacao['base_url']         = base_url($CI->config->item('adm') . $url);

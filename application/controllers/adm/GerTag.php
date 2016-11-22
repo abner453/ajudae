@@ -3,7 +3,7 @@
 class GerTag extends CI_Controller{
     
     var $funcionalidadeId = 1;
-    var $limitePaginacao  = 10;
+    var $limitePaginacao  = 3;
     
     public function __construct() {
         parent::__construct();
@@ -26,6 +26,8 @@ class GerTag extends CI_Controller{
             
         $clausulas = $this->MontaClausulas();
         $dados['tags'] = $this->tagmodel->BuscarComClausulas($clausulas, $de, $this->limitePaginacao);
+        
+        $dados['paginacao'] = _montaPaginacao('gerTag/index', 4, $this->tagmodel->QuantidadeComClausulas($clausulas), $this->limitePaginacao);
         
         $dados['assetsPlugin'][] = 'inputMask/inputmask.js';
         $dados['assetsPlugin'][] = 'inputMask/inputmask.date.extensions.js';

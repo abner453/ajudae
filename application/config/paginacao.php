@@ -16,10 +16,10 @@ $config['per_page']       = 16;
 
 $config['paginacao']['full_tag_open']   = '<ul class="pagination">';
 $config['paginacao']['full_tag_close']  = '</ul>';
-$config['paginacao']['first_link']      = '<i class="fa fa-chevron-left"></i>';
+$config['paginacao']['first_link']      = '<<';
 $config['paginacao']['first_tag_open']  = '<li>';
 $config['paginacao']['first_tag_close'] = '</li>';
-$config['paginacao']['last_link']       = '<i class="fa fa-chevron-right"></i>';
+$config['paginacao']['last_link']       = '>>';
 $config['paginacao']['last_tag_open']   = '<li>';
 $config['paginacao']['last_tag_close']  = '</li>';
 //$config['next_link'] = '&gt;';
