@@ -22,4 +22,26 @@ class Usuario extends CI_Controller{
         
         $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }
+    
+     public function Filtrar() {
+        
+        if($this->input->post('botaoLimpar') == 'limpar') {
+            
+            $dadosSessao = array('idUsuario', 'nomeUsuario', 'situacao');
+
+            $this->session->unset_userdata($dadosSessao);
+        }
+        else {
+           
+            $dadosSessao = array();
+
+            $dadosSessao['idUsuario']       = $this->input->post('idUsuario');
+            $dadosSessao['nomeUsuario']     = $this->input->post('nomeUsuario');
+            $dadosSessao['situacao'] = $this->input->post('situacao');
+
+            $this->session->set_userdata($dadosSessao);
+        }
+        
+        redirect(base_url($this->config->item('adm') . 'Usuario/index'));
+    }
 }

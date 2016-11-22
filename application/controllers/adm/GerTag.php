@@ -40,17 +40,17 @@ class GerTag extends CI_Controller{
         
         $retorno = array();
         
-        if(!empty($this->session->userdata('idGerTag'))) {
+        if($this->session->userdata('idGerTag')) {
             
             $retorno['TAG_ID'] = $this->session->userdata('idGerTag');
         }
         
-        if(!empty($this->session->userdata('nomeGerTag'))) {
+        if($this->session->userdata('nomeGerTag')) {
             
             $retorno['TAG_NOME like '] = '%' . $this->session->userdata('nomeGerTag') . '%';
         }
         
-        if(!empty($this->session->userdata('cadastroGerTag'))) {
+        if($this->session->userdata('cadastroGerTag')) {
             
             if($this->session->userdata('cadastroGerTag') == 'app') {
                 
@@ -62,7 +62,7 @@ class GerTag extends CI_Controller{
             }
         }
         
-        if(!empty($this->session->userdata('dataGerTag'))) {
+        if($this->session->userdata('dataGerTag')) {
             
             $retorno['TAG_DATA_REGISTRO >= '] = _ConverteDataPorEng($this->session->userdata('dataGerTag')) . ' 00:00:00';
             $retorno['TAG_DATA_REGISTRO <= '] = _ConverteDataPorEng($this->session->userdata('dataGerTag')) . ' 23:59:59';
@@ -73,7 +73,7 @@ class GerTag extends CI_Controller{
     
     public function Filtrar() {
         
-        if(!empty($this->input->post(botaoLimpar))) {
+        if($this->input->post('botaoLimpar') == 'limpar') {
             
             $dadosSessao = array('idGerTag', 'nomeGerTag', 'cadastroGerTag', 'dataGerTag');
 
@@ -83,14 +83,14 @@ class GerTag extends CI_Controller{
            
             $dadosSessao = array();
 
-            $dadosSessao['idGerTag'] = $this->input->post('idGerTag');
-            $dadosSessao['nomeGerTag'] = $this->input->post('nomeGerTag');
+            $dadosSessao['idGerTag']       = $this->input->post('idGerTag');
+            $dadosSessao['nomeGerTag']     = $this->input->post('nomeGerTag');
             $dadosSessao['cadastroGerTag'] = $this->input->post('cadastroGerTag');
-            $dadosSessao['dataGerTag'] = $this->input->post('dataGerTag');
+            $dadosSessao['dataGerTag']     = $this->input->post('dataGerTag');
 
             $this->session->set_userdata($dadosSessao);
         }
         
-        redirect($this->config->item('adm') . 'gerTag/index');
+        redirect(base_url($this->config->item('adm') . 'gerTag/index'));
     }
 }
