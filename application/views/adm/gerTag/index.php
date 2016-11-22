@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <input type="text" class="form-control" id="dataGerTag" placeholder="Data Cadastro" name="dataGerTag" value="<?php echo $this->session->userdata('dataGerTag');?>">
                         </div>
-                        <button type="submit" class="btn btn-default" value="filtrar">Filtrar</button>
+                        <button type="submit" class="btn btn-default" value="filtrar" name="botaoFiltro">Filtrar</button>
                         <button type="submit" class="btn btn-warning" value="limpar" name="botaoLimpar">Limpar</button>
                         <?php echo form_close();?>
                     </div>

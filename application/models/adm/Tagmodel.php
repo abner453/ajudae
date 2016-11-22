@@ -65,9 +65,9 @@ class TagModel extends CI_Model{
         $this->db->limit($limite, $de);
         
         $resultado = $this->db->get();
-        
-        if($resultado->num_rows()){
-            
+      
+        if($resultado->current_row){
+            die($resultado->num_rows());
             return $resultado->result();
         }
         else {
