@@ -66,8 +66,8 @@ class TagModel extends CI_Model{
         
         $resultado = $this->db->get();
       
-        if($resultado->current_row){
-            die($resultado->num_rows());
+        if($resultado->num_rows()){
+            
             return $resultado->result();
         }
         else {
