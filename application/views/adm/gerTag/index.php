@@ -29,6 +29,11 @@
                         <?php echo form_close();?>
                     </div>
                 </div>
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-md-12">
+                        <a href="<?php echo base_url($this->config->item('adm') . 'gerTag/nova');?>" class="btn btn-primary">Nova TAG</a>
+                    </div>
+                </div>
             </header>
             <div class="table-responsive">
                 <table class="table">

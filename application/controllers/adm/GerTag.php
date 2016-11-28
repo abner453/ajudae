@@ -3,7 +3,7 @@
 class GerTag extends CI_Controller{
     
     var $funcionalidadeId = 1;
-    var $limitePaginacao  = 3;
+    var $limitePaginacao  = 10;
     
     public function __construct() {
         parent::__construct();
@@ -94,5 +94,19 @@ class GerTag extends CI_Controller{
         }
         
         redirect(base_url($this->config->item('adm') . 'gerTag/index'));
+    }
+    
+    public function nova() {
+        
+        $dados                        = array();
+        $dados['titulo']              = 'Gerenciar TAGs';
+        $dados['view']                = 'gerTag/editar';
+        $dados['funcionalidadeAtiva'] = $this->funcionalidadeId;
+        
+        $dados['assetsAjax'][] = 'GerTag.js';
+        
+        $dados['urlSalvar'] = base_url($this->config->item('adm') . 'gerTag/salvar');
+        
+        $this->load->view($this->config->item('urlLayoutAdm'), $dados);
     }
 }
